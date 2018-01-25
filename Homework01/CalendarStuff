@@ -28,7 +28,7 @@ public class CalendarStuff {
    * A listing of the days of the week, assigning numbers; Note that the week arbitrarily starts on Sunday
    */
    private static final int SUNDAY    = 1;
-   private static final int MONDAY    = SUNDAY    + 1;
+   private static final int MONDAY    = SUNDAY + 1;
    private static final int TUESDAY    = MONDAY + 1;
    private static final int WEDNESDAY     = TUESDAY + 1;
    private static final int THURSDAY     = WEDNESDAY + 1;
@@ -40,7 +40,7 @@ public class CalendarStuff {
    * A listing of the months of the year, assigning numbers; I suppose these could be ENUMs instead, but whatever
    */
    private static final int JANUARY    = 1;
-   private static final int FEBRUARY   = JANUARY   + 1;
+   private static final int FEBRUARY   = JANUARY + 1;
    private static final int MARCH    = FEBRUARY + 1;
    private static final int APRIL    = MARCH + 1;
    private static final int MAY    = APRIL + 1;
@@ -120,7 +120,15 @@ public class CalendarStuff {
    * @return          boolean which is true if the two dates are exactly the same
    */
    public static boolean dateEquals( long month1, long day1, long year1, long month2, long day2, long year2 ) {
-      return true;  // replace this with the actual code
+    if (CalendarStuff.isValidDate(month1,day1,year1) == true && CalendarStuff.isValidDate(month2,day2,year2) == true){
+      if (month1 == month2 && day1 == day2 && year1 == year2){
+        return true;
+      }else{
+        return false;
+      }
+    }else{
+      return false;
+    }
    }
 
   /**
@@ -134,7 +142,17 @@ public class CalendarStuff {
    * @return          int    -1/0/+1 if first date is less than/equal to/greater than second
    */
    public static int compareDate( long month1, long day1, long year1, long month2, long day2, long year2 ) {
-      return 0;  // replace this with the actual code
+    if (CalendarStuff.isValidDate(month1,day1,year1) == true && CalendarStuff.isValidDate(month2,day2,year2) == true){
+      if (year1 > year2 || year1 == year2 && month1 > month2 || year1 == year2 && month1 == month2 && day1 > day2){
+        return 1;
+      }else if (year1 == year2 && month1 == month2 && day1 == day2){
+        return 0;
+      }else{
+        return -1;
+      }
+    }else{
+      return 10;
+    }
    }
 
   /**
@@ -187,9 +205,35 @@ public class CalendarStuff {
    * @return         String containing the string value of the month (no spaces)
    */
    public static String toMonthString( int month ) {
-      switch( month - 1 ) {
+    String monthstring;
+      switch( month ) {
+        case 1: monthstring = "January";
+          break;
+        case 2: monthstring = "February";
+          break;
+        case 3: monthstring = "March";
+          break;
+        case 4: monthstring = "April";
+          break;
+        case 5: monthstring = "May";
+          break;
+        case 6: monthstring = "June";
+          break;
+        case 7: monthstring = "July";
+          break;
+        case 8: monthstring = "August";
+          break;
+        case 9: monthstring = "September";
+          break;
+        case 10: monthstring = "October";
+          break;
+        case 11: monthstring = "November";
+          break;
+        case 12: monthstring = "December";
+          break;
          default: throw new IllegalArgumentException( "Illegal month value given to 'toMonthString()'." );
       }
+      return monthstring;
    }
 
   /**
@@ -198,9 +242,26 @@ public class CalendarStuff {
    * @return       String containing the string value of the day (no spaces)
    */
    public static String toDayOfWeekString( int day ) {
-      switch( day - 1 ) {
+    String daystring;
+      switch( day ) {
+        case 1: daystring = "Sunday";
+          break;
+        case 2: daystring = "Monday";
+          break;
+        case 3: daystring = "Tuesday";
+          break;
+        case 4: daystring = "Wednesday";
+          break;
+        case 5: daystring = "Thursday";
+          break;
+        case 6: daystring = "Friday";
+          break;
+        case 7: daystring = "Saturday";
+          break;
+
          default       : throw new IllegalArgumentException( "Illegal day value given to 'toDayOfWeekString()'." );
       }
+      return daystring;
    }
 
   /**
@@ -215,8 +276,228 @@ public class CalendarStuff {
    */
    public static long daysBetween( long month1, long day1, long year1, long month2, long day2, long year2 ) {
       long dayCount = 0;
-      return dayCount;
-   }
+      long yearsBetween;
+      long earlierYear;
+    if (year1 > year2){
+      yearsBetween = year1-year2;
+      earlierYear = year2;
+    }else if (year2 > year1){
+      yearsBetween = year2-year1;
+      earlierYear = year1;
+    }else{
+      yearsBetween = 0;
+      earlierYear = 0;
+    }
+
+
+    if (CalendarStuff.isValidDate(month1, day1, year1) == true && CalendarStuff.isValidDate(month2, day2, year2) == true){
+        for (long i = earlierYear + 1; i < earlierYear + yearsBetween; i++){
+            dayCount += 365;
+          if (CalendarStuff.isLeapYear(i) == true){
+            dayCount += 1;
+          }else{
+            dayCount += 0;
+          }
+        }
+
+      if (earlierYear == year1){
+        if (month1 ==1){
+          dayCount += (365-day1);
+        }else if (month1 == 2){
+          dayCount += (365-31- day1);
+        }else if (month1 == 3){
+          dayCount += (365-31-28-day1);
+        }else if (month1 == 4){
+          dayCount += (365-31-28-31-day1);
+        }else if (month1 == 5){
+          dayCount += (365-31-28-31-30-day1);
+        }else if (month1 == 6){
+          dayCount += (365-31-28-31-30-31-day1);
+        }else if (month1 == 7){
+          dayCount += (365-31-28-31-30-31-30-day1);
+        }else if (month1 == 8){
+          dayCount += (365-31-28-31-30-31-30-31-day1);
+        }else if (month1 == 9){
+          dayCount += (365-31-28-31-30-31-30-31-31-day1);
+        }else if (month1 == 10){
+          dayCount += (365-31-28-31-30-31-30-31-31-30-day1);
+        }else if (month1 == 11){
+          dayCount += (365-31-28-31-30-31-30-31-31-30-31-day1);
+        }else{
+          dayCount += (365-31-28-31-30-31-30-31-31-30-31-30-day1);
+        }
+        if (CalendarStuff.isLeapYear(year1)==true && (month1<=2 || month1==2 && day1==29)){
+          dayCount += 1;
+        }else{
+          dayCount += 0;
+        }
+        if (month2==1){
+          dayCount += day2;
+        }else if (month2==2){
+          dayCount += (31+day2);
+        }else if (month2==3){
+          dayCount += (31+28+day2);
+        }else if (month2==4){
+          dayCount += (31+28+31+day2);
+        }else if (month2==5){
+          dayCount += (31+28+31+30+day2);
+        }else if (month2==6){
+          dayCount += (31+28+31+30+31+day2);
+        }else if (month2==7){
+          dayCount += (31+28+31+30+31+30+day2);
+        }else if (month2==8){
+          dayCount += (31+28+31+30+31+30+31+day2);
+        }else if (month2==9){
+          dayCount += (31+28+31+30+31+30+31+31+day2);
+        }else if (month2==10){
+          dayCount += (31+28+31+30+31+30+31+31+30+day2);
+        }else if (month2==11){
+          dayCount += (31+28+31+30+31+30+31+31+30+31+day2);
+        }else{
+          dayCount += (31+28+31+30+31+30+31+31+30+31+30+day2);
+        }
+        if (CalendarStuff.isLeapYear(year2)==true && month2>=3){
+          dayCount += 1;
+        }else{
+          dayCount += 0;
+        }
+
+
+
+      }else if (earlierYear == year2){
+        if (month2 ==1){
+          dayCount += (365-day2);
+        }else if (month2 == 2){
+          dayCount += (365-31- day2);
+        }else if (month2 == 3){
+          dayCount += (365-31-28-day2);
+        }else if (month2 == 4){
+          dayCount += (365-31-28-31-day2);
+        }else if (month2 == 5){
+          dayCount += (365-31-28-31-30-day2);
+        }else if (month2 == 6){
+          dayCount += (365-31-28-31-30-31-day2);
+        }else if (month2 == 7){
+          dayCount += (365-31-28-31-30-31-30-day2);
+        }else if (month2 == 8){
+          dayCount += (365-31-28-31-30-31-30-31-day2);
+        }else if (month2 == 9){
+          dayCount += (365-31-28-31-30-31-30-31-31-day2);
+        }else if (month2 == 10){
+          dayCount += (365-31-28-31-30-31-30-31-31-30-day2);
+        }else if (month2 == 11){
+          dayCount += (365-31-28-31-30-31-30-31-31-30-31-day2);
+        }else{
+          dayCount += (365-31-28-31-30-31-30-31-31-30-31-30-day2);
+        }
+        if (CalendarStuff.isLeapYear(year2)==true && (month2<=2 || month2==2 && day2==29)){
+          dayCount += 1;
+        }else{
+          dayCount += 0;
+        }
+        if (month1==1){
+          dayCount += day1;
+        }else if (month1==2){
+          dayCount += (31+day1);
+        }else if (month1==3){
+          dayCount += (31+28+day1);
+        }else if (month1==4){
+          dayCount += (31+28+31+day1);
+        }else if (month1==5){
+          dayCount += (31+28+31+30+day1);
+        }else if (month1==6){
+          dayCount += (31+28+31+30+31+day1);
+        }else if (month1==7){
+          dayCount += (31+28+31+30+31+30+day1);
+        }else if (month1==8){
+          dayCount += (31+28+31+30+31+30+31+day1);
+        }else if (month1==9){
+          dayCount += (31+28+31+30+31+30+31+31+day1);
+        }else if (month1==10){
+          dayCount += (31+28+31+30+31+30+31+31+30+day1);
+        }else if (month1==11){
+          dayCount += (31+28+31+30+31+30+31+31+30+31+day1);
+        }else{
+          dayCount += (31+28+31+30+31+30+31+31+30+31+30+day1);
+        }
+        if (CalendarStuff.isLeapYear(year1)==true && month1>=3){
+          dayCount += 1;
+        }else{
+          dayCount += 0;
+        }
+
+
+
+      }else{
+        long firstDays;
+        long secondDays;
+        if (month1 == 1){
+          firstDays = day1;
+        }else if (month1 == 2){
+          firstDays = 31+day1;
+        }else if (month1 == 3){
+          firstDays = 31+28+day1;
+        }else if (month1 == 4){
+          firstDays = 31+28+31+day1;
+        }else if (month1 == 5){
+          firstDays = 31+28+31+30+day1;
+        }else if (month1 == 6){
+          firstDays = 31+28+31+30+31+day1;
+        }else if (month1 == 7){
+          firstDays = 31+28+31+30+31+30+day1;
+        }else if (month1 == 8){
+          firstDays = 31+28+31+30+31+30+31+day1;
+        }else if (month1 == 9){
+          firstDays = 31+28+31+30+31+30+31+31+day1;
+        }else if (month1 == 10){
+          firstDays = 31+28+31+30+31+30+31+31+30+day1;
+        }else if (month1 == 11){
+          firstDays = 31+28+31+30+31+30+31+31+30+31+day1;
+        }else{
+          firstDays = 31+28+31+30+31+30+31+31+30+31+30+day1;
+        }
+        if (CalendarStuff.isLeapYear(year1)==true && month1>=3){
+          firstDays += 1;
+        }else{
+          firstDays += 0;
+        }
+        if (month2 == 1){
+          secondDays = day2;
+        }else if (month2 == 2){
+          secondDays = 31+day2;
+        }else if (month2 == 3){
+          secondDays = 31+28+day2;
+        }else if (month2 == 4){
+          secondDays = 31+28+31+day2;
+        }else if (month2 == 5){
+          secondDays = 31+28+31+30+day2;
+        }else if (month2 == 6){
+          secondDays = 31+28+31+30+31+day2;
+        }else if (month2 == 7){
+          secondDays = 31+28+31+30+31+30+day2;
+        }else if (month2 == 8){
+          secondDays = 31+28+31+30+31+30+31+day2;
+        }else if (month2 == 9){
+          secondDays = 31+28+31+30+31+30+31+31+day2;
+        }else if (month2 == 10){
+          secondDays = 31+28+31+30+31+30+31+31+30+day2;
+        }else if (month2 == 11){
+          secondDays = 31+28+31+30+31+30+31+31+30+31+day2;
+        }else{
+          secondDays = 31+28+31+30+31+30+31+31+30+31+30+day2;
+        }
+        if (CalendarStuff.isLeapYear(year2)==true && month2>=3){
+          secondDays += 1;
+        }else{
+          secondDays += 0;
+        }
+        dayCount = Math.abs(firstDays - secondDays);
+
+      }
+    }
+    return dayCount;
+  }
+
 
 }
 
