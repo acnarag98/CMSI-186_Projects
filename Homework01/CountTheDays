@@ -1,0 +1,23 @@
+/**
+ *  File name     :  CountTheDays.java
+ *  Purpose       :  Allows user input for counting the days between two dates.
+ *  Author        :  Andrew Narag (prototype)
+ *  Date          :  2018-01-25 (prototype)
+ *  Author        :  <your Andrew Narag>
+ *  Date          :  <date 1_18_18>
+ *  Description   :  This file calls method daysBetween in class file CalendarStuff.java in order to count the days between two dates specified by the user.
+ *  Notes         :  None
+ *  Warnings      :  None
+ *  Exceptions    :  None
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ **/
+
+public class CountTheDays{
+	public static void main(String[] args){
+		long dateString[] = new long[6];
+		for(int i = 0; i <= 5; i++){
+			dateString[i] = Long.parseLong(args[i]);
+		}
+		System.out.println("There are " + CalendarStuff.daysBetween(dateString[0], dateString[1], dateString[2], dateString[3], dateString[4], dateString[5]) + " days between those two dates");
+	}
+}
