@@ -4,7 +4,7 @@
  *  Purpose       :  Demonstrates the use of input from a command line for use with Yahtzee
  *  Author        :  Andrew Narag
  *  Date          :  2018-02-22
- *  Description   :  
+ *  Description   :
  *  Notes         :  None
  *  Warnings      :  None
  *  Exceptions    :  None
@@ -51,7 +51,7 @@ public class HighRoll{
                try{
                   diceCount = Integer.parseInt(setDice);
                   System.out.println("Number of dice to roll: "+ diceCount);
-                  if (diceCount<1 || diceCount>20){
+                  if (diceCount<1 || diceCount>20){   // YOU SHOULDN'T LIMIT THE MAXIMUM NUMBER OF DICE; THERE IS NO MAXIMUM!!!
                      throw new IllegalArgumentException();
                   }
                }
@@ -107,7 +107,7 @@ public class HighRoll{
             System.out.print( ">>" );
             String inputLine = null;
             String inputUpper = null;
-            
+
 
             try {
                inputLine = input.readLine();
@@ -145,7 +145,7 @@ public class HighRoll{
                   catch (Exception e) {
                      System.out.println("Invalid input. Valid inputs are numbers between 1 and "+diceCount);
                   }
-                  
+
                }
                if( 'C' == inputUpper.charAt(0) ) {
                   System.out.println(dice.sum());

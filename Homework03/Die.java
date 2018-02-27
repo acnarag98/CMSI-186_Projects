@@ -92,9 +92,11 @@ public class Die {
       if (changeSides < MINIMUM_SIDES){
         throw new IllegalArgumentException();
       }
-      if (changeSides > 20){
-        throw new IllegalArgumentException();
-      }
+      // I COMMENTED THIS OUT -- DON'T ARBITRARILY LIMIT THE NUMBER OF SIDES --
+      //   I HAVE TESTS WITH 111 SIDES.....
+      // if (changeSides > 20){
+      //   throw new IllegalArgumentException();
+      // }
       sides = changeSides;
    }
 
@@ -118,7 +120,7 @@ public class Die {
    * A little test main to check things out
    */
    public static void main( String[] args ) {
-      
+
       Die d4 = new Die(4);
 
       Die d5 = new Die(5);

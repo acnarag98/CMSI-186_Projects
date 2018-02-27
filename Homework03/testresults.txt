@@ -1,0 +1,882 @@
+
+
+
+Hello world from the Die class..
+
+
+     TESTING PHASE
+
+  Number of Faces Equal?
+Equal
+  Die Value 1?
+Not 1
+  Die Value 2?
+Not 1
+  Die Value 3?
+Not 1
+  Die Value 4?
+Value 4
+  Die Value 5?
+Not 5
+  Die Value 0 or 6?
+Valid Value
+  Roll Value = Get Value??
+Equal
+  Sides from 6 to 5?
+Change Success
+  String Correct?
+Incorrect
+d6.toString is: [0]
+Die.toString(d5) is: [1]
+false
+d56.toString() is: [3][4][3][6][6]
+d56.diceRoll[0] is now: 1
+d56.toString() is now: [1][4][3][6][6]
+d156.toString() is:[5][1][6][5][2]
+d56.toString() vs d156.toString(): false
+false
+
+NOTE: END OF DICESET CLASS TESTS
+
+TESTING THE DIE CLASS: TEST CONSTRUCTOR FOR INVALID NUMBERS OF SIDES:
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+   Too few sides requested to constructor....
+TESTING THE DIE CLASS: TESTS ON 4-SIDED DIE:
+   roll() test for 4 sided die: 
+   You rolled a 3
+   You rolled a 3
+   You rolled a 2
+   You rolled a 3
+   You rolled a 4
+   Current value is: [4]
+TESTING THE DIE CLASS: TESTS ON 5-SIDED DIE:
+   roll() test for 5 sided die: 
+   You rolled a 3
+   You rolled a 3
+   You rolled a 4
+   You rolled a 2
+   You rolled a 5
+   Current value is: [5]
+TESTING THE DIE CLASS: TESTS ON 6-SIDED DIE:
+   roll() test for 6 sided die: 
+   You rolled a 6
+   You rolled a 4
+   You rolled a 1
+   You rolled a 2
+   You rolled a 6
+   Current value is: [6]
+TESTING THE DIE CLASS: TESTS ON 7-SIDED DIE:
+   roll() test for 7 sided die: 
+   You rolled a 2
+   You rolled a 3
+   You rolled a 3
+   You rolled a 4
+   You rolled a 3
+   Current value is: [3]
+TESTING THE DIE CLASS: TESTS ON 8-SIDED DIE:
+   roll() test for 8 sided die: 
+   You rolled a 1
+   You rolled a 2
+   You rolled a 2
+   You rolled a 6
+   You rolled a 7
+   Current value is: [7]
+TESTING THE DIE CLASS: TESTS ON 11-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 2
+      You rolled a 10
+      You rolled a 4
+      You rolled a 5
+      You rolled a 5
+TESTING THE DIE CLASS: TESTS ON 17-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 6
+      current value is: 6
+TESTING THE DIE CLASS: TESTS ON 111-SIDED DIE USING NEW SIDE COUNT:
+   Rolling with new side count -- 
+      You rolled a 18
+      current value is: 18
+......End of Die Class Testing.....
+
+
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 3 SIX-SIDED DICE:
+  DiceSet: 3 dice, six sided - ds36:
+      initialized ds36 contents             : [0][0][0]
+      after collective roll ds36 contents   : [2][4][1]
+      after individual roll(2) ds36 contents: [2][4][6]
+      sum of dice values is: 12
+   Re-rolling all dice
+      after collective roll ds36 contents   : [1][3][2]
+      after individual roll(2) ds36 contents: [1][3][4]
+      sum of dice values is                 : 8
+   Test of getIndividual(): 
+      value of die at index 0: 1
+      value of die at index 1: 3
+      value of die at index 2: 4
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 6 NINE-SIDED DICE:
+   DiceSet: 6 dice, nine sided - ds69:
+      initialized ds36 contents             : [0][0][0][0][0][0]
+      after collective roll ds69 contents   : [4][3][5][2][5][9]
+      after individual roll(2) ds69 contents: [4][3][5][2][5][9]
+      sum of dice values is                 : 28
+   Re-rolling all dice
+      after collective roll ds69 contents   : [1][5][9][6][8][4]
+      after individual roll(3) ds69 contents: [1][5][9][1][8][4]
+      sum of dice values is                 : 28
+   Test of getIndividual(): 
+      value of die at index 0: 1
+      value of die at index 1: 5
+      value of die at index 2: 9
+      value of die at index 3: 1
+      value of die at index 4: 8
+      value of die at index 5: 4
+TESTING THE DICESET CLASS: TEST CONSTRUCTOR FOR 9 SEVENTEEN-SIDED DICE:
+   DiceSet: 9 dice, 17 sided - ds917:
+      initialized ds36 contents              : [0][0][0][0][0][0][0][0][0]
+      after collective roll ds917 contents   : [5][3][10][16][13][17][4][17][12]
+      after individual roll(6) ds917 contents: [5][3][10][16][13][17][3][17][12]
+      sum of dice values is                  : 96
+   Re-rolling all dice
+      after collective roll ds917 contents   : [2][13][1][15][15][15][2][8][13]
+      after individual roll(8) ds69 contents : [2][13][1][15][15][15][2][8][3]
+      sum of dice values is                  : 74
+   Test of getIndividual(): 
+      value of die at index 0: 2
+      value of die at index 1: 13
+      value of die at index 2: 1
+      value of die at index 3: 15
+      value of die at index 4: 15
+      value of die at index 5: 15
+      value of die at index 6: 2
+      value of die at index 7: 8
+      value of die at index 8: 3
+TESTING THE DICESET CLASS: TEST 'isIdentical()' FOR 9 SEVENTEEN-SIDED DICE:
+   Test of isIndentical(): 
+      Test of ds917 against ds69   : false
+      Test of ds917 against itself : false
+TESTING THE DICESET CLASS: TEST 'isIdentical()' FOR NEW SET OF 9 SEVENTEEN-SIDED DICE:
+   DiceSet ds917 contents       : [14][2][17][8][8][12][3][12][13]
+      New DiceSet ds2_917 contents : [2][13][1][15][8][8][6][2][6]
+      Test of ds917 against ds2_917: false
+......End of DiceSet Class Testing.....
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Welcome to the High Roll!!
+   Enter 'Q' to quit at any time.
+
+
+How many dice would you like to roll?
+You can roll a minimum of 1 and a maximum of 20 dice.
+Number of dice to roll: 5
+How many sides would you like your dice to have?
+You can have a minimum of 4 and a maximum of 20 sides on each die.
+Number of sides for each die: 6
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[2][1][2][4][1]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[4][1][6][6][4]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[3][2][2][2][6]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 5 to roll that die.
+
+>>
+[3][2][1][2][6]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 5 to roll that die.
+
+>>
+[3][2][1][2][3]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 5 to roll that die.
+
+>>
+[3][5][1][2][3]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+14
+The score for this set is 14
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+14 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 14
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[1][3][1][1][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[5][1][1][3][6]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 5 to roll that die.
+
+>>
+[5][1][1][3][1]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 5 to roll that die.
+
+>>
+[4][1][1][3][1]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+10
+The score for this set is 10
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+10 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 10
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: q
+Thanks for playing!!
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Welcome to the High Roll!!
+   Enter 'Q' to quit at any time.
+
+
+How many dice would you like to roll?
+You can roll a minimum of 1 and a maximum of 20 dice.
+Number of dice to roll: 11
+How many sides would you like your dice to have?
+You can have a minimum of 4 and a maximum of 20 sides on each die.
+Number of sides for each die: 17
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[1][3][5][6][3][16][3][16][2][12][1]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[1][17][15][12][1][15][13][11][12][17][9]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[15][11][11][15][11][7][6][17][10][14][6]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 11 to roll that die.
+
+>>
+[15][11][11][15][11][7][6][17][10][14][12]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 11 to roll that die.
+
+>>
+[1][11][11][15][11][7][6][17][10][14][12]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 11 to roll that die.
+
+>>
+[1][11][11][15][11][7][1][17][10][14][12]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+110
+The score for this set is 110
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+110 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 110
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[1][14][12][5][3][5][1][1][15][14][3]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[10][3][14][17][16][10][17][9][16][1][15]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 11 to roll that die.
+
+>>
+[10][3][14][17][4][10][17][9][16][1][15]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 11 to roll that die.
+
+>>
+[10][3][3][17][4][10][17][9][16][1][15]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+105
+The score for this set is 105
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+105 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 105
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: q
+Thanks for playing!!
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Welcome to the High Roll!!
+   Enter 'Q' to quit at any time.
+
+
+How many dice would you like to roll?
+You can roll a minimum of 1 and a maximum of 20 dice.
+Number of dice to roll: 29
+Program terminating...Next time, please enter a number between 1 and 20.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Welcome to the High Roll!!
+   Enter 'Q' to quit at any time.
+
+
+How many dice would you like to roll?
+You can roll a minimum of 1 and a maximum of 20 dice.
+Number of dice to roll: 20
+How many sides would you like your dice to have?
+You can have a minimum of 4 and a maximum of 20 sides on each die.
+Number of sides for each die: 4
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[1][1][3][4][4][4][3][3][3][3][4][4][1][1][1][1][3][3][4][4]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[3][1][2][3][4][3][4][4][4][1][3][1][3][1][2][4][2][3][4][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[3][2][3][3][3][2][3][2][4][3][2][2][1][2][4][4][3][2][3][3]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 20 to roll that die.
+
+>>
+[3][2][3][3][3][2][3][2][4][3][2][2][1][2][4][4][3][2][3][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 20 to roll that die.
+
+>>
+[1][2][3][3][3][2][3][2][4][3][2][2][1][2][4][4][3][2][3][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 20 to roll that die.
+
+>>
+[1][2][3][3][3][2][3][2][4][3][2][2][1][2][4][4][1][2][3][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+49
+The score for this set is 49
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+49 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 49
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[4][2][2][2][1][2][1][1][1][2][1][3][2][3][3][2][3][4][1][1]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: r
+[3][2][3][3][2][1][4][2][1][3][3][3][3][4][4][3][1][1][3][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 20 to roll that die.
+
+>>
+[3][2][3][3][2][1][4][2][1][3][3][3][3][4][4][3][1][1][2][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: i
+Enter a number between 1 and 20 to roll that die.
+
+>>
+[3][2][3][3][2][1][4][2][1][3][3][3][3][4][4][3][1][1][2][2]
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: c
+50
+The score for this set is 50
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: s
+50 has been saved as the high score.
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: d
+The current high score is: 50
+
+
+ENTER 'R' to roll all the dice!
+ENTER 'I' if you want to roll an individual die!
+ENTER 'C' to calculate the score for this set!
+ENTER 'S' to save this score as a high score!
+ENTER 'D' to display the high score!
+ENTER 'Q' to quit the program!
+
+
+>>   You typed: q
+Thanks for playing!!
