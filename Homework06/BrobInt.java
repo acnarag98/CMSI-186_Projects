@@ -59,7 +59,6 @@ public class BrobInt {
     *  @param  value  String value to make into a BrobInt
     */
     public BrobInt( String value ) {
-    	// System.out.println("value is: "+value);
     	
     	if ( value.charAt(0)=='-' ){
     		this.sign = -1;
@@ -72,13 +71,26 @@ public class BrobInt {
     		this.internalValue += value;
     	}
 
- 		intVersion = new int[ (int)Math.floor( internalValue.length()/intDigitsHandle ) + 1 ];
+        if ( internalValue.length()%intDigitsHandle == 0 ){
+            intVersion = new int[ internalValue.length()/intDigitsHandle ];
+        }else {
+            intVersion = new int[ internalValue.length()/intDigitsHandle + 1 ];
+        }
 
  		if ( internalValue.length()>9 ) {
-	      	for ( int i=internalValue.length()-1-8 ; i>0 ; i=i-9 ) {
-	      		intVersion[(int)Math.ceil(i/9+1)] = Integer.parseInt( internalValue.substring( i, i+9 ) );
-	      	}
-            intVersion[0] = Integer.parseInt( internalValue.substring( 0, internalValue.length()%intDigitsHandle ) );
+	      	for ( int i=internalValue.length()-1-8 ; i>0 ; i-=9 ) {
+                if ( i%9 == 0 ){
+                    intVersion[(int)Math.ceil(i/9)] = Integer.parseInt( internalValue.substring ( i, i+9 ) );
+                }else {
+	      		    intVersion[(int)Math.ceil(i/9+1)] = Integer.parseInt( internalValue.substring( i, i+9 ) );
+	      	    }
+            }
+
+            if ( internalValue.length()%intDigitsHandle == 0 ){
+                intVersion[0] = Integer.parseInt( internalValue.substring( 0, internalValue.length()%intDigitsHandle + 10 ) );
+            }else{ 
+                intVersion[0] = Integer.parseInt( internalValue.substring( 0, internalValue.length()%intDigitsHandle ) );
+            }
         }else {
             intVersion[0] = Integer.parseInt( internalValue );
         }
@@ -89,7 +101,7 @@ public class BrobInt {
       	}
 
         byteReversed = new byte[ internalValue.length() ];
-        for ( int i=internalValue.length()-1 ; i>=0 ; i-- ) {
+        for ( int i = internalValue.length()-1 ; i>=0 ; i-- ) {
             this.reversed += internalValue.charAt(i);
         }
         for ( int i=0 ; i<=internalValue.length()-1 ; i++ ) {
@@ -241,9 +253,6 @@ public class BrobInt {
         int shortest = 0;
         int lengthDifference = Math.abs( intVersion.length - bint.getIntArray().length );
         
-        // System.out.println("Arrays.toString(intVersion) is: "+Arrays.toString(intVersion));
-        // System.out.println("Arrays.toString(bint.getIntArray()) is: "+Arrays.toString(bint.getIntArray()));
-
         if ( intVersion.length > bint.getIntArray().length ){
             longest = intVersion.length;
             shortest = bint.getIntArray().length;
@@ -318,31 +327,32 @@ public class BrobInt {
             }
         }else {
             for ( int j=0 ; j<=addArray.length-1 ; j++ ){
-                if (addArray[j] < 100000000 && j!=1){
+                if (addArray[j] < 100000000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 10000000 && j!=1){
+                if (addArray[j] < 10000000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 1000000 && j!=1){
+                if (addArray[j] < 1000000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 100000 && j!=1){
+                if (addArray[j] < 100000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 10000 && j!=1){
+                if (addArray[j] < 10000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 1000 && j!=1){
+                if (addArray[j] < 1000 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 100 && j!=1){
+                if (addArray[j] < 100 && j!=0){
                     outString+="0";
                 }
-                if (addArray[j] < 10 && j!=1){
+                if (addArray[j] < 10 && j!=0){
                     outString+="0";
                 }
                 outString+=Integer.toString(addArray[j]);
+
             }
         }
 
@@ -381,66 +391,80 @@ public class BrobInt {
     *  @return BrobInt that is the difference of the value of this BrobInt and the one passed in
     *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
     public BrobInt subtractInt( BrobInt bint ) {
-        throw new UnsupportedOperationException( "\n         This is still a work in Progress." );
+        // throw new UnsupportedOperationException( "\n         This is still a work in Progress." );
 
-        // BrobInt subIntOut = null;
-        // String outString = "";
-        // int subResult = 0;
-        // int longest = 0;
-        // int shortest = 0;
-        // int lengthDifference = Math.abs( intVersion.length - bint.getIntArray().length );
+        BrobInt subIntOut = null;
+        String outString = "";
+        int subResult = 0;
+        int longest = 0;
+        int shortest = 0;
+        int lengthDifference = Math.abs( intVersion.length - bint.getIntArray().length );
         
+        if ( intVersion.length > bint.getIntArray().length ){
+            longest = intVersion.length;
+            shortest = bint.getIntArray().length;
+        }else {
+            longest = bint.getIntArray().length;
+            shortest = intVersion.length;
+        }
 
-        // if ( intVersion.length > bint.getIntArray().length ){
-        //     longest = intVersion.length;
-        //     shortest = bint.getIntArray().length;
-        // }else {
-        //     longest = bint.getIntArray().length;
-        //     shortest = intVersion.length;
-        // }
+        int subArray[] = new int[longest+1];
+        for ( int p=0 ; p<(longest-1) ; p++ ){
+            subArray[p] = 0;
+        }
 
-        // int subArray[] = new int[longest+1];
-        // for ( int p=0 ; p<(longest-1) ; p++ ){
-        //     subArray[p] = 0;
-        // }
+        for (int i=(longest-1) ; i>= (longest-1)-(shortest-1) ; i-- ){
+            if ( intVersion.length > bint.getIntArray().length ){
+                if ( intVersion[i] - bint.getIntArrayValue( i-lengthDifference ) < 0 ){
+                    intVersion[i-1] -= 1;
+                    intVersion[i] += 1000000000;
+                    for ( int j=i-1 ; j>=0 ; j-- ){
+                        if ( intVersion[j] < 0 ){
+                            intVersion[j-1] -= 1;
+                            intVersion[j] += 1000000000;
+                        }else {
+                            j = -1;
+                        }
+                    }
+                }
+                subResult = intVersion[i] - bint.getIntArrayValue(i-lengthDifference);
+                System.out.println("intVersion[i] is: "+intVersion[i]);
+                System.out.println("bint.getIntArrayValue(i) is: "+bint.getIntArrayValue(i-lengthDifference));
+                System.out.println("subResult is: "+subResult);
 
-        // for (int i=(longest-1) ; i>= (longest-1)-(shortest-1) ; i-- ){
-        //     if ( intVersion.length > bint.getIntArray().length ){
-        //         if ( intVersion[i] - bint.getIntArrayValue( i-lengthDifference ) < 0 ){
-        //             intVersion[i-1] -= 1;
-        //             intVersion[i] += 1000000000;
-        //             for ( int j=i-1 ; j>=0 ; j-- ){
-        //                 if ( intVersion[j] < 0 ){
-        //                     intVersion[j-1] -= 1;
-        //                     intVersion[j] += 1000000000;
-        //                 }else {
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //         subResult = intVersion[i] - bint.getIntArrayValue(i);
-        //     }else if ( bint.getIntArray().length > intVersion.length ){
-        //         if ( bint.getIntArrayValue(i) - intVersion[i-lengthDifference] < 0 ){
-        //             bint.getIntArrayValue(i-1) -= 1;
-        //             bint.getIntArrayValue(i) += 1000000000;
-        //             for ( int k=i-1 ; k>= 0 ; k-- ){
-        //                 if ( bint.getIntArrayValue(k) <0 ){
-        //                     bint.getIntArrayValue(k-1) -= 1;
-        //                     bint.getIntArrayValue(k) += 1000000000;
-        //                 }else {
-        //                     break;
-        //                 }
-        //             }
-        //         }
-        //         subResult = bint.getIntArrayValue(i) - intVersion[i] ;
-        //     }
-        //     subArray[i+1] += subResult;
-        //     System.out.println("Arrays.toString(subArray) is: "+Arrays.toString(subArray));
-        // }
+            }else if( bint.getIntArray().length > intVersion.length ){
+                if ( bint.getIntArrayValue(i) - intVersion[i-lengthDifference] < 0 ){
+                    bint.getIntArray()[i-1] -= 1;
+                    bint.getIntArray()[i] += 1000000000;
+                    for ( int k=i-1 ; k>= 0 ; k-- ){
+                        if ( bint.getIntArrayValue(k) <0 ){
+                            bint.getIntArray()[k-1] -= 1;
+                            bint.getIntArray()[k] += 1000000000;
+                        }else {
+                            k = -1;
+                        }
+                    }
+                }
+                subResult = bint.getIntArrayValue(i) - intVersion[i-lengthDifference];
+                System.out.println("intVersion[i] is: "+intVersion[i-lengthDifference]);
+                System.out.println("bint.getIntArrayValue(i) is: "+bint.getIntArrayValue(i));
+                System.out.println("subResult is: "+subResult);
 
-        // return new BrobInt("50779");
+            }else {
+                for ( int k=0 ; k<longest-1 ; k++ ){
+                    if( intVersion[k] > bint.getIntArrayValue(k) ){
 
+                    }else if( intVersion[k] < bint.getIntArrayValue(k) ){
 
+                    }
+                }
+
+            }
+            subArray[i+1] += subResult;
+            System.out.println("Arrays.toString(subArray) is: "+Arrays.toString(subArray));
+        }
+
+        return new BrobInt("50779");
 
     }
 
@@ -542,6 +566,7 @@ public class BrobInt {
 
     public static void main( String[] args ) {
     	BrobInt b1 = new BrobInt("-123456");
+
         System.out.println("b1.toString() is: "+b1.toString());
         System.out.println(b1.toString());
       	System.out.println( "\n  Hello, world, from the BrobInt program!!\n" );
@@ -549,9 +574,12 @@ public class BrobInt {
         BrobInt fortyone = new BrobInt("102334155");
         BrobInt forty = new BrobInt("63245986");
         System.out.println("fortyone.getInternalValue().length is: "+fortyone.getInternalValueLength());
+        System.out.println("Arrays.toString(fortyone) is: "+Arrays.toString(fortyone.intVersion));
         System.out.println("forty.getInternalValue().length is: "+forty.getInternalValueLength());
+        System.out.println("Arrays.toString(forty) is: "+Arrays.toString(forty.intVersion));
         System.out.println( "63245986 + 102334155 is: "+forty.addInt(fortyone).toString());
       	System.exit( 0 );
     }
+
 
 }
