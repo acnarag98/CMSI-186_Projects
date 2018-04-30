@@ -3,9 +3,9 @@
  * Purpose    :  Program to represent a tuple of integers, indexed from zero
  * @author    :  Andrew Narag
  * Date       :  2018-04-24
- * Description:  This program provides a "Tuple" class which is basically a set of "n" integers that are
- *                handled as a unit.  This class is inttupTabed to be used as part of homework 7, the coin
- *                changemaker, which is a "Dynamic Programming" algorithm.
+ * Description:  This program will calculate the optimal number of coins of certain value denominations
+ *                to amount to a user-specified target amount of change using a "Dynamic Programming"
+ *                algorithm.
  * Notes      :  None
  * Warnings   :  None
  *
